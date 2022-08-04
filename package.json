@@ -1,0 +1,22 @@
+{
+  "name": "waf-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMSgov/serverless-cms-waf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CMSgov/serverless-cms-waf/issues"
+  },
+  "homepage": "https://github.com/CMSgov/serverless-cms-waf#readme",
+  "peerDependencies": {
+    "serverless": "3.x"
+  }
+}
