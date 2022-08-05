@@ -1,6 +1,6 @@
 "use strict";
 
-class MyPlugin {
+class WafPlugin {
   constructor() {
     this.hooks = {
       initialize: () => this.init(),
@@ -27,4 +27,4 @@ class MyPlugin {
   }
 }
 
-module.exports = MyPlugin;
+module.exports = WafPlugin;
