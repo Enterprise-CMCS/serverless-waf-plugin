@@ -11,7 +11,7 @@ class WafPlugin {
 
   init() {
     console.log("Serverless instance: ", this.serverless);
-
+    //add comment
     console.log("hello world");
   }
 
