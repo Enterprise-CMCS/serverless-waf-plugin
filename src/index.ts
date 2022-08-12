@@ -1,7 +1,9 @@
 "use strict";
 
-class WafPlugin {
-  constructor(serverless) {
+export class WafPlugin {
+  private serverless: any;
+  private hooks: any;
+  constructor(serverless: any) {
     this.serverless = serverless;
     this.hooks = {
       initialize: () => this.init(),
@@ -18,24 +20,6 @@ class WafPlugin {
 
   generateWafResource() {
     console.log("is this getting called");
-    // this.serverless.service.resources.Resources.APIGwWebAcl = {
-    //   Type: "AWS::WAFv2::WebACL",
-    //   Properties: {
-    //     Name: this.serverless.service.custom.webAclName + "hellothere",
-    //     DefaultAction: {
-    //       Block: {},
-    //     },
-    //   },
-    // };
-
-    // console.log(
-    //   "serverless instance resources: ",
-    //   this.serverless.service.resources
-    // );
-    // console.log(
-    //   "serverless instance resources properties: ",
-    //   this.serverless.service.resources.Resources.APIGwWebAcl.Properties
-    // );
   }
 
   updateStack() {
