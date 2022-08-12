@@ -2,8 +2,15 @@
   "name": "waf-plugin",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +24,13 @@
   },
   "homepage": "https://github.com/CMSgov/serverless-cms-waf#readme",
   "peerDependencies": {
-    "serverless": "3.x"
+    "serverless": "3.x",
+    "typescript": "4.x"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16.0"
   }
 }
