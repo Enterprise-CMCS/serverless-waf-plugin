@@ -1,5 +1,5 @@
 {
-  "name": "waf-plugin",
+  "name": "@enterprise-cmcs/waf-plugin",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
