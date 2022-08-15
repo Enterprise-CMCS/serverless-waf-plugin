@@ -1,7 +1,8 @@
 {
-  "name": "@enterprise-cmcs/waf-plugin",
+  "name": "@enterprise-cmcs/serverless-waf-plugin",
   "version": "1.0.0",
   "description": "",
+  "private": "false",
   "main": "dist/src/index.js",
   "files": [
     "dist",
