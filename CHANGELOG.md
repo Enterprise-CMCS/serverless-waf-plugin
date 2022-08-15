@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.3...v1.0.4) (2022-08-15)
+
+
+### Bug Fixes
+
+* **rm-private:** remove private field ([fc597d1](https://github.com/CMSgov/serverless-cms-waf/commit/fc597d106ebf6948b53ae02859b95bb0d0ddfe50))
+
 ## [1.0.3](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.2...v1.0.3) (2022-08-15)
 
 
