@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.4...v1.0.5) (2022-08-15)
+
+
+### Bug Fixes
+
+* **bump-ver:** bump version ([5e1a9d0](https://github.com/CMSgov/serverless-cms-waf/commit/5e1a9d0cbc8d353acaeaba8d7c6bf0150fbb667f))
+
 ## [1.0.4](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.3...v1.0.4) (2022-08-15)
 
 
