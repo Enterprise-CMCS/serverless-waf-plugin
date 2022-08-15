@@ -36,6 +36,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.4.tgz#95baa50846ae112a7376869d49fec23b2506c69d"
   integrity sha512-RzRcw8c0B8LzryWOR4Wj7YOTFXvdYKwvrb6xQQyuDfnlTxwYXGCV5RZ/TEbq5L5kn+w3rliHAUyRcG1RtbmTFg==
 
+"@types/serverless@^3.12.8":
+  version "3.12.8"
+  resolved "https://registry.yarnpkg.com/@types/serverless/-/serverless-3.12.8.tgz#6a34e382e4887ce4e2dca1bf309e3015cd21e200"
+  integrity sha512-z2qnRRghiVU0Gi7tYDabDjCgz13nPw8uanTaWFTVr0YJ8H2+2D4tY3R45WQ50b4bG3gA/TP3sYNuxVI5Epf90g==
+
 aggregate-error@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.1.0.tgz#92670ff50f5359bdb7a3e0d40d0ec30c5737687a"
