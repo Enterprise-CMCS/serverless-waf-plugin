@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.5...v1.0.6) (2022-08-15)
+
+
+### Bug Fixes
+
+* **add-waf-rules:** add waf rules ([ef4fe75](https://github.com/CMSgov/serverless-cms-waf/commit/ef4fe750e7199d13e0de11c273626016f8135c4f))
+* **rm-if-temp:** remove conditional install check temperarily ([896611f](https://github.com/CMSgov/serverless-cms-waf/commit/896611f894436882d194548f3e5c46e9c1d125af))
+
 ## [1.0.5](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.4...v1.0.5) (2022-08-15)
 
 
