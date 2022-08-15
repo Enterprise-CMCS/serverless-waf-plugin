@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.2...v1.0.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* **fix-conflicts:** fix conflicts ([0147509](https://github.com/CMSgov/serverless-cms-waf/commit/01475093906e295ba360c212b6f90fa63c1c29ac))
+* **priv-false:** set private to false ([bef95e9](https://github.com/CMSgov/serverless-cms-waf/commit/bef95e92e071bc8978da73bea94e90d52870e9de))
+
 ## [1.0.2](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.1...v1.0.2) (2022-08-15)
 
 
