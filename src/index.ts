@@ -10,6 +10,7 @@ export class WafPlugin {
     this.serverless = serverless;
     this.hooks = {
       "before:package:finalize": () => this.updateStack(),
+      "after:package:finalize": () => console.log("WAF Deployed"),
     };
   }
 
@@ -149,6 +150,8 @@ export class WafPlugin {
           Scope: "REGIONAL",
         },
       };
+
+    console.log("Deploying WAF");
   }
 }
 
