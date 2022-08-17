@@ -9,20 +9,8 @@ export class WafPlugin {
   constructor(serverless: Serverless) {
     this.serverless = serverless;
     this.hooks = {
-      initialize: () => this.init(),
-      "after:deploy:deploy": () => this.generateWafResource(),
       "before:package:finalize": () => this.updateStack(),
     };
-  }
-
-  init() {
-    this.serverless.service.custom.testValue = "hello world";
-    console.log("serverless instance: ", this.serverless);
-    // this.generateWafResource();
-  }
-
-  generateWafResource() {
-    console.log("is this getting called");
   }
 
   updateStack() {
@@ -37,16 +25,13 @@ export class WafPlugin {
     }-${this.serverless.service.getServiceName()}-webacl`;
 
     const awsCommonExcludeRules: string[] =
-      this.serverless.service.custom?.awsCommonExcludeRules ?? [];
+      this.serverless.service.custom?.wafExcludeRules?.awsCommon ?? [];
 
     const awsIpReputationExcludeRules: string[] =
-      this.serverless.service.custom?.awsIpReputationExcludeRules ?? [];
-    this.serverless.service.custom?.ddosRateLimitRules ?? [];
+      this.serverless.service.custom?.wafExcludeRules?.awsIpReputation ?? [];
 
     const awsBadInputsExcludeRules: string[] =
-      this.serverless.service.custom?.awsBadInputsExcludeRules ?? [];
-
-    console.log("waf name: ", wafName);
+      this.serverless.service.custom?.wafExcludeRules?.awsBadInputs ?? [];
 
     this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
       {
