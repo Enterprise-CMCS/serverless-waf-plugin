@@ -55,3 +55,12 @@ custom:
         awsCommon:
             - "SizeRestrictions_BODY"
 ```
+
+Below is an example of how you would set a custom rate-limit (to protect against ddos attacks) in the serverless.yml file:
+(Note: if no value is set for the rate limit the default is 5000)
+
+```
+custom:
+    wafExcludeRules:
+        awsRateLimit: 200
+```
