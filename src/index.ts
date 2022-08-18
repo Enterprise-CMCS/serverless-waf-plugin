@@ -34,6 +34,9 @@ export class WafPlugin {
     const awsBadInputsExcludeRules: string[] =
       this.serverless.service.custom?.wafExcludeRules?.awsBadInputs ?? [];
 
+    const awsRateLimit: number =
+      this.serverless.service.custom?.wafExcludeRules?.awsRateLimit ?? 5000;
+
     this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
       {
         Type: "AWS::WAFv2::WebACL",
@@ -56,7 +59,7 @@ export class WafPlugin {
               },
               Statement: {
                 RateBasedStatement: {
-                  Limit: 5000,
+                  Limit: awsRateLimit,
                   AggregateKeyType: "IP",
                 },
               },
