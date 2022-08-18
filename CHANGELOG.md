@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.6...v1.0.7) (2022-08-18)
+
+
+### Bug Fixes
+
+* **dynamic-naming:** add dynamic naming and exclude rules ([c72b290](https://github.com/CMSgov/serverless-cms-waf/commit/c72b290024e50b9c733a84df6d5b61d9e2cb430e))
+
 ## [1.0.6](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.5...v1.0.6) (2022-08-15)
 
 
