@@ -5,29 +5,34 @@ import Serverless from "serverless";
 export class WafPlugin {
   private serverless: Serverless;
   private hooks: any;
-  constructor(serverless: any) {
+
+  constructor(serverless: Serverless) {
     this.serverless = serverless;
     this.hooks = {
-      initialize: () => this.init(),
-      "after:deploy:deploy": () => this.generateWafResource(),
       "before:package:finalize": () => this.updateStack(),
+      "after:package:finalize": () => console.log("WAF Deployed"),
     };
   }
 
-  init() {
-    this.serverless.service.custom.testValue = "hello world";
-    console.log("serverless instance: ", this.serverless);
-    // this.generateWafResource();
-  }
-
-  generateWafResource() {
-    console.log("is this getting called");
-  }
-
   updateStack() {
+    const generateExcludeRuleList = (rules: string[]) => {
+      return rules.map((ruleToExclude) => ({
+        Name: ruleToExclude,
+      }));
+    };
     // set the waf name based on stage and service name ${self:service}-${self:custom.stage}-webacl
-    const wafName = this.serverless.service.custom.wafName;
-    console.log("waf name: ", wafName);
+    const wafName = `${
+      this.serverless.service.custom.stage
+    }-${this.serverless.service.getServiceName()}-webacl`;
+
+    const awsCommonExcludeRules: string[] =
+      this.serverless.service.custom?.wafExcludeRules?.awsCommon ?? [];
+
+    const awsIpReputationExcludeRules: string[] =
+      this.serverless.service.custom?.wafExcludeRules?.awsIpReputation ?? [];
+
+    const awsBadInputsExcludeRules: string[] =
+      this.serverless.service.custom?.wafExcludeRules?.awsBadInputs ?? [];
 
     this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
       {
@@ -72,9 +77,7 @@ export class WafPlugin {
                   VendorName: "AWS",
                   Name: "AWSManagedRulesCommonRuleSet",
                   ExcludedRules: [
-                    {
-                      Name: "SizeRestrictions_BODY",
-                    },
+                    ...generateExcludeRuleList(awsCommonExcludeRules),
                   ],
                 },
               },
@@ -94,6 +97,9 @@ export class WafPlugin {
                 ManagedRuleGroupStatement: {
                   VendorName: "AWS",
                   Name: "AWSManagedRulesAmazonIpReputationList",
+                  ExcludedRules: [
+                    ...generateExcludeRuleList(awsIpReputationExcludeRules),
+                  ],
                 },
               },
               VisibilityConfig: {
@@ -112,6 +118,9 @@ export class WafPlugin {
                 ManagedRuleGroupStatement: {
                   VendorName: "AWS",
                   Name: "AWSManagedRulesKnownBadInputsRuleSet",
+                  ExcludedRules: [
+                    ...generateExcludeRuleList(awsBadInputsExcludeRules),
+                  ],
                 },
               },
               VisibilityConfig: {
@@ -141,6 +150,8 @@ export class WafPlugin {
           Scope: "REGIONAL",
         },
       };
+
+    console.log("Deploying WAF");
   }
 }
 
