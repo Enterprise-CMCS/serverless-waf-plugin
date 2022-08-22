@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CMSgov/serverless-cms-waf/compare/v1.1.0...v1.1.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **lower-version-node:** Lower the supported version of node to version 14 and higher instead of 16 ([0b61ad4](https://github.com/CMSgov/serverless-cms-waf/commit/0b61ad4f336794165cf6561454ba65837740eadd))
+
 # [1.1.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.7...v1.1.0) (2022-08-22)
 
 
