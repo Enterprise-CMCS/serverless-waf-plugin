@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.7...v1.1.0) (2022-08-22)
+
+
+### Features
+
+* **custom-ddos:** custom ddos rate limiting is now supported ([e501d93](https://github.com/CMSgov/serverless-cms-waf/commit/e501d93d460d917dd9e958747e429ca70c5e1955))
+
 ## [1.0.7](https://github.com/CMSgov/serverless-cms-waf/compare/v1.0.6...v1.0.7) (2022-08-18)
 
 
