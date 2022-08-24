@@ -37,6 +37,15 @@ export class WafPlugin {
     const awsRateLimit: number =
       this.serverless.service.custom?.wafExcludeRules?.awsRateLimit ?? 5000;
 
+    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogGroup =
+      {
+        Type: "AWS::Logs::LogGroup",
+        Properties: {
+          LogGroupName: `aws-waf-logs-${wafName}`,
+          RetentionInDays: 7,
+        },
+      };
+
     this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
       {
         Type: "AWS::WAFv2::WebACL",
@@ -151,6 +160,24 @@ export class WafPlugin {
             },
           ],
           Scope: "REGIONAL",
+        },
+      };
+
+    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogConfiguration =
+      {
+        Type: "AWS::WAFv2::LoggingConfiguration",
+        Properties: {
+          ResourceArn: { "Fn::GetAtt": ["APIGwWebAclTest", "Arn"] },
+          LogDestinationConfigs: [
+            {
+              "Fn::Select": [
+                "0",
+                {
+                  "Fn::Split": [":*", { "Fn::GetAtt": ["WafLogGroup", "Arn"] }],
+                },
+              ],
+            },
+          ],
         },
       };
 
