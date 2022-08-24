@@ -57,10 +57,21 @@ custom:
 ```
 
 Below is an example of how you would set a custom rate-limit (to protect against ddos attacks) in the serverless.yml file:
+
 (Note: if no value is set for the rate limit the default is 5000)
 
 ```
 custom:
     wafExcludeRules:
         awsRateLimit: 200
+```
+
+Below is an example of how to enable logging to cloudwatch from within the serverless.yml file. The cloudwatch log group will be called `aws-waf-logs-[stage-name]-[service-name]-webacl`:
+
+(Note: The default value for logging is set to false meaning ther will be no logs)
+
+```
+custom:
+    wafExcludeRules:
+        enableLogging: true
 ```
