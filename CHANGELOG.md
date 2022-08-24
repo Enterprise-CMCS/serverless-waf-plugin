@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.1.1...v1.2.0) (2022-08-24)
+
+
+### Features
+
+* **add-logging:** Add Logging to the WafPlugin ([b08bd3e](https://github.com/CMSgov/serverless-cms-waf/commit/b08bd3e51bcbc333739b0500ef6bba542f2cd06b))
+
 ## [1.1.1](https://github.com/CMSgov/serverless-cms-waf/compare/v1.1.0...v1.1.1) (2022-08-22)
 
 
