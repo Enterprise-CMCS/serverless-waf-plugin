@@ -37,15 +37,19 @@ export class WafPlugin {
     const awsRateLimit: number =
       this.serverless.service.custom?.wafExcludeRules?.awsRateLimit ?? 5000;
 
-    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogGroup =
-      {
-        Type: "AWS::Logs::LogGroup",
-        Properties: {
-          LogGroupName: `aws-waf-logs-${wafName}`,
-          RetentionInDays: 7,
-        },
-      };
+    const enableLogging: boolean =
+      this.serverless.service.custom?.wafExcludeRules?.enableLogging ?? false;
 
+    if (enableLogging) {
+      this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogGroup =
+        {
+          Type: "AWS::Logs::LogGroup",
+          Properties: {
+            LogGroupName: `aws-waf-logs-${wafName}`,
+            RetentionInDays: 7,
+          },
+        };
+    }
     this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
       {
         Type: "AWS::WAFv2::WebACL",
@@ -163,23 +167,28 @@ export class WafPlugin {
         },
       };
 
-    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogConfiguration =
-      {
-        Type: "AWS::WAFv2::LoggingConfiguration",
-        Properties: {
-          ResourceArn: { "Fn::GetAtt": ["APIGwWebAclTest", "Arn"] },
-          LogDestinationConfigs: [
-            {
-              "Fn::Select": [
-                "0",
-                {
-                  "Fn::Split": [":*", { "Fn::GetAtt": ["WafLogGroup", "Arn"] }],
-                },
-              ],
-            },
-          ],
-        },
-      };
+    if (enableLogging) {
+      this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogConfiguration =
+        {
+          Type: "AWS::WAFv2::LoggingConfiguration",
+          Properties: {
+            ResourceArn: { "Fn::GetAtt": ["APIGwWebAclTest", "Arn"] },
+            LogDestinationConfigs: [
+              {
+                "Fn::Select": [
+                  "0",
+                  {
+                    "Fn::Split": [
+                      ":*",
+                      { "Fn::GetAtt": ["WafLogGroup", "Arn"] },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        };
+    }
 
     console.log("Deploying WAF");
   }
