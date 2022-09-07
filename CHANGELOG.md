@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.2.0...v1.3.0) (2022-09-07)
+
+
+### Features
+
+* **add-scope:** Add scope and update documentation ([#5](https://github.com/CMSgov/serverless-cms-waf/issues/5)) ([77dd88e](https://github.com/CMSgov/serverless-cms-waf/commit/77dd88e9bd2059e3e55ecce5b1f68e16ca11ab3d))
+
 # [1.2.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.1.1...v1.2.0) (2022-08-24)
 
 
