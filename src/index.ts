@@ -40,6 +40,9 @@ export class WafPlugin {
     const enableLogging: boolean =
       this.serverless.service.custom?.wafExcludeRules?.enableLogging ?? false;
 
+    const wafScope: string =
+      this.serverless.service.custom?.wafExcludeRules?.wafScope ?? "REGIONAL";
+
     if (enableLogging) {
       this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogGroup =
         {
@@ -50,7 +53,7 @@ export class WafPlugin {
           },
         };
     }
-    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.APIGwWebAclTest =
+    this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafPluginAcl =
       {
         Type: "AWS::WAFv2::WebACL",
         Properties: {
@@ -58,6 +61,7 @@ export class WafPlugin {
           DefaultAction: {
             Block: {},
           },
+          Scope: wafScope,
           VisibilityConfig: {
             CloudWatchMetricsEnabled: true,
             SampledRequestsEnabled: true,
@@ -163,7 +167,6 @@ export class WafPlugin {
               },
             },
           ],
-          Scope: "REGIONAL",
         },
       };
 
