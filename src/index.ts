@@ -5,6 +5,7 @@ import Serverless from "serverless";
 export class WafPlugin {
   private serverless: Serverless;
   private hooks: any;
+  private config: any;
 
   constructor(serverless: Serverless) {
     this.serverless = serverless;
@@ -12,6 +13,8 @@ export class WafPlugin {
       "before:package:finalize": () => this.updateStack(),
       "after:package:finalize": () => console.log("WAF Deployed"),
     };
+
+    this.config = this.serverless.service.custom.wafPlugin || {};
   }
 
   updateStack() {
@@ -70,7 +73,7 @@ export class WafPlugin {
           Rules: [
             {
               Name: `${wafName}-DDOSRateLimitRule`,
-              Priority: 0,
+              Priority: 10,
               Action: {
                 Block: {},
               },
@@ -88,7 +91,7 @@ export class WafPlugin {
             },
             {
               Name: `${wafName}-AWSCommonRule`,
-              Priority: 1,
+              Priority: 20,
               OverrideAction: {
                 None: {},
               },
@@ -109,7 +112,7 @@ export class WafPlugin {
             },
             {
               Name: `${wafName}-AWSManagedRulesAmazonIpReputationList`,
-              Priority: 2,
+              Priority: 30,
               OverrideAction: {
                 None: {},
               },
@@ -130,7 +133,7 @@ export class WafPlugin {
             },
             {
               Name: `${wafName}-AWSManagedRulesKnownBadInputsRuleSet`,
-              Priority: 3,
+              Priority: 40,
               OverrideAction: {
                 None: {},
               },
@@ -151,7 +154,7 @@ export class WafPlugin {
             },
             {
               Name: `${wafName}-allow-usa-plus-territories`,
-              Priority: 5,
+              Priority: 50,
               Action: {
                 Allow: {},
               },
@@ -169,6 +172,12 @@ export class WafPlugin {
           ],
         },
       };
+    
+    this.config?.rules?.forEach((ruleEntry: any) => {
+      if(ruleEntry.enable){
+        this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafPluginAcl.Properties.Rules.push(ruleEntry.rule);
+      }
+    });
 
     if (enableLogging) {
       this.serverless.service.provider.compiledCloudFormationTemplate.Resources.WafLogConfiguration =
