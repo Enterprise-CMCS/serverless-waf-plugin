@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/CMSgov/serverless-cms-waf/compare/v1.3.0...v1.3.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **allow custom rules:**  Allow custom specs ([#7](https://github.com/CMSgov/serverless-cms-waf/issues/7)) ([0b876bd](https://github.com/CMSgov/serverless-cms-waf/commit/0b876bdbfe4dacb005e3114c41f02e3787c3ce52))
+
 # [1.3.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.2.0...v1.3.0) (2022-09-07)
 
 
