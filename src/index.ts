@@ -24,7 +24,7 @@ export class WafPlugin {
       }));
     };
     // set the waf name based on stage and service name ${self:service}-${self:custom.stage}-webacl
-    const wafName = `${
+    const wafName = this.config?.name || `${
       this.serverless.service.custom.stage
     }-${this.serverless.service.getServiceName()}-webacl`;
 
