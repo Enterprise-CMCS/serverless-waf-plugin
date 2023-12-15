@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/CMSgov/serverless-cms-waf/compare/v1.3.1...v1.3.2) (2023-12-15)
+
+
+### Bug Fixes
+
+* **accept waf name config:**  Allow user to specify a waf name ([#8](https://github.com/CMSgov/serverless-cms-waf/issues/8)) ([c7387f7](https://github.com/CMSgov/serverless-cms-waf/commit/c7387f7079f6fc0e925b6546511d795296c2552a))
+
 ## [1.3.1](https://github.com/CMSgov/serverless-cms-waf/compare/v1.3.0...v1.3.1) (2023-12-15)
 
 
