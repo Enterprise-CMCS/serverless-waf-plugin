@@ -160,7 +160,7 @@ export class WafPlugin {
               },
               Statement: {
                 GeoMatchStatement: {
-                  CountryCodes: ["AS", "GU", "PR", "US", "UM", "VI", "MP"],
+                  CountryCodes: ["AS", "FM", "GU", "MH", "MP", "PR", "PW", "UM", "US", "VI"],
                 },
               },
               VisibilityConfig: {
