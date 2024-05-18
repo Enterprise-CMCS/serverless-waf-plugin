@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/CMSgov/serverless-cms-waf/compare/v1.3.2...v1.4.0) (2024-05-18)
+
+
+### Features
+
+* **territory support:** Adding support to grant all US territories access to CMS applications ([#10](https://github.com/CMSgov/serverless-cms-waf/issues/10)) ([9bb31c6](https://github.com/CMSgov/serverless-cms-waf/commit/9bb31c66ab549917274b431c1aae1b6018099d1e))
+
 ## [1.3.2](https://github.com/CMSgov/serverless-cms-waf/compare/v1.3.1...v1.3.2) (2023-12-15)
 
 
